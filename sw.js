@@ -1,7 +1,7 @@
 /* ===============================
    CACHE NAME (change version to force update)
    =============================== */
-const cacheName = 'almo3ine-v00';
+const cacheName = 'almo3ine-v00-1';
 
 /* ===============================
    FILES TO CACHE FOR OFFLINE USE
@@ -77,4 +77,5 @@ self.addEventListener('fetch', event => {
         caches.match(event.request).then(response => response || fetch(event.request))
     );
 });
+
 
