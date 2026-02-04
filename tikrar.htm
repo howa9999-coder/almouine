@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/tikrar.css">
+    <link rel="manifest" href="manifest.json">
+    <title>المعين على التكرار</title>
+</head>
+<body dir="rtl">
+        <header>
+                <a href="index.html">
+                    <h1>
+                         المعين على التكرار
+                    </h1>
+                </a>
+
+    </header>
+    <div id="header_fixed">
+            <div class="settings-bar">
+                <span>العدد:</span>
+                <select name="" id="repeat">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20" selected>20</option>
+                    <option value="30" >30</option>
+                </select>
+            </div>
+        <div class="controls">
+            <button class="btn btn-record" id="mic" >
+                <span>⏺</span> تسجيل
+            </button>
+
+            <button class="btn btn-refresh refresh" id="refresh-btn">
+                <span>🔄</span> تحديث
+            </button>
+        </div>
+        <div class="tikrar-progress-container">
+            <div id="tikrar-progress-bar"></div>
+        </div>
+        <div id="counter-container"><span id="counter"></span>/<span id="goal-container"></span></div>
+
+    </div>
+        <main>
+        <div class="from-to">           
+            <h4  > من <span id="from-content" contenteditable="true">----</span> إلى <span id="to-content" contenteditable="true">----</span> </h4>
+        </div>
+        <div id="checkbox-container"></div>
+        <div id="customModal" style="display: none;">
+            <div class="modal-content">
+                <p>هل تريد حفظ المحفوظ؟</p>
+                <div class="modal-buttons">
+                    <button class="btn" onclick="handleResponse(true)">نعم</button>
+                    <button class="btn" onclick="handleResponse(false)">لا</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <audio controls  id="audio-recorder" class="playback" style="display: none;"></audio>
+    <button class="btn btn-play" id="custom-play-btn">
+        <span class="icon">▶</span>
+        <span class="text">استماع للتسجيل</span>
+    </button>
+    <script src="js/tikrar.js"></script>
+</body>
+</html>
