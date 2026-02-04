@@ -34,16 +34,13 @@ const assets = [
    - Runs once when SW is installed
    - Caches all required assets
    =============================== */
+
 self.addEventListener('install', event => {
-
-    // Tell browser to wait until caching is finished
     event.waitUntil(
-
-        // Open (or create) the cache
         caches.open(cacheName).then(cache => {
-
-            // Add all assets to cache (IMPORTANT: return promise)
-            return cache.addAll(assets);
+            return cache.addAll(assets).catch(err => {
+                console.error('Caching failed:', err);
+            });
         })
     );
 });
@@ -74,16 +71,10 @@ self.addEventListener('activate', event => {
    - Intercepts network requests
    - Serves cached files first
    =============================== */
+
 self.addEventListener('fetch', event => {
-
     event.respondWith(
-
-        // Check if request exists in cache
-        caches.match(event.request).then(response => {
-
-            // If cached → return it
-            // Else → fetch from network
-            return response || fetch(event.request);
-        })
+        caches.match(event.request).then(response => response || fetch(event.request))
     );
 });
+
