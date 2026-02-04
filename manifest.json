@@ -1,7 +1,7 @@
 {
   "name": "المعين - رفيقك في رحاب القرآن",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./index.html",
+  "scope": "./",
   "theme_color": "#2d5a27",
   "background_color": "#f4f7f6",
   "short_name": "المعين ",
@@ -22,4 +22,5 @@
       "sizes": "192x192"
     }
   ]
+
 }
