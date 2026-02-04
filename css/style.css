@@ -1,0 +1,163 @@
+:root {
+    --primary-green: #2d5a27;
+    --primary-green-transparent: #2d5a271d;
+    --light-green: #e8f5e9;
+    --gold: #c5a059;
+    --gold-transparent: #dbc08f27;
+    --text-dark: #333;
+    --bg-dark: #282828;
+    --bg-color: #f4f7f6;
+    --bg-white: #ddd;
+    --warning: #c57659;
+    --blue: #007BFF;
+    --shadow: rgba(0,0,0,0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.main-header {
+    background-color: var(--primary-green);
+    color: white;
+    padding: 3rem 1rem;
+    text-align: center;
+    border-bottom: 5px solid var(--gold);
+}
+
+.app-name {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 600px;
+    margin: -30px auto 20px;
+    padding: 0 1rem;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px var(--shadow);
+    border-right: 5px solid var(--gold);
+}
+
+.feature-card h3 {
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+}
+a{
+    text-decoration: none;
+}
+/* Progress Bar Styling */
+.progress-wrapper {
+    background-color: var(--bg-white);
+    border-radius: 10px;
+    height: 12px;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    background-color: var(--gold);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.5s ease;
+}
+.slogan{
+    font-size: 1.2rem;
+    color: #ccc;
+
+}
+.progress-text {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.more-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.more{
+    display: none;
+    cursor: pointer;
+    color: var(--primary-green);
+    font-size: 1.4rem;
+}
+.more.active{
+    display: inline-block;
+}
+/* The initial hidden state */
+.tassbih-data {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px); /* Starts slightly higher up */
+    transition: all 0.3s ease-in-out; /* This creates the smooth animation */
+    
+    /* Optional: prevent it from taking up space when hidden */
+    height: 0;
+    overflow: hidden;
+}
+
+/* The visible 'active' state */
+.tassbih-data.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Drops down into place */
+    height: auto; /* Or a specific height if preferred */
+    padding: 10px; /* Optional padding */
+}
+.divider {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 2rem 0;
+}
+
+.how-to-use {
+    text-align: center;
+    padding-bottom: 3rem;
+}
+
+.how-to-use h2 {
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+}
+
+.how-to-use p {
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+.install-btn {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--primary-green-transparent);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.install-btn:hover {
+    background-color: #1e3d1a;
+    transform: scale(1.05);
+}
+#to-content, #from-content{
+    font-weight: bold;
+}

@@ -1,0 +1,183 @@
+:root {
+            --primary-green: #2d5a27;
+            --light-green: #e8f5e9;
+            --gold: #c5a059;
+            --text-dark: #333;
+            --bg-color: #f4f7f6;
+            --warning: #c57659;
+    }
+
+body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+    }
+.home-page{
+    display: inline-block;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+    width: 100%;
+    text-align: start;
+}
+header, #header_fixed{
+    text-align: center;
+    background: white;
+    padding: 20px;
+}
+header{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-top: 8px solid var(--primary-green);
+
+}
+#header_fixed {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0px;
+            z-index: 100;
+            margin-bottom: 30px;
+            border-bottom-left-radius: 15px ;
+            border-bottom-right-radius: 15px;
+            transition: background 0.5s ease, box-shadow 0.3s ease,padding 0.3s ease, top 0.3s ease;
+    }
+header.no-background{
+            top: 5px;
+            padding: 0px;
+            background: var(--text-dark);
+            box-shadow: 0 0px 0px rgba(0,0,0,0.05);
+            transition: background 0.5s ease, box-shadow 0.3s ease, padding 0.5s ease, top 0.5s ease;           
+        }
+
+h1 { color: var(--primary-green); margin-bottom: 10px; }
+
+.progress-container {
+            width: 100%;
+            background: #eee;
+            border-radius: 10px;
+            height: 20px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+.title-container {
+            opacity: 1;
+            max-height: 200px; /* Adjust to be slightly larger than your div height */
+            overflow: hidden;  /* Prevents content from leaking out during shrink */
+            transition: 
+                opacity 0.4s ease, 
+                max-height 0.5s ease, 
+                margin 0.5s ease, 
+                padding 0.5s ease;
+        }
+
+.title-container.hidden {
+            opacity: 0;
+            max-height: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            pointer-events: none; /* User can't click it */
+        }
+
+#progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--primary-green));
+            transition: width 0.3s ease;
+        }
+
+.stats { margin-top: 10px; font-weight: bold; }
+
+.grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+.juz-box {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            border-right: 5px solid var(--gold);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+.juz-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: block;
+            color: var(--primary-green);
+        }
+
+.hizb-pair {
+            display: flex;
+            gap: 10px;
+        }
+
+.hizb-item {
+            flex: 1;
+            position: relative;
+        }
+
+.hizb-item input[type="checkbox"] {
+            display: none; /* Hide default checkbox */
+        }
+
+.hizb-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 5px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+.hizb-label:hover { border-color: var(--gold); }
+.hizb-number { font-size: 1.2rem; font-weight: 900; }
+.hizb-text { font-size: 0.8rem; color: #666; }
+
+/* Checked State */
+.hizb-item input:checked + .hizb-label {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+            color: white;
+        }
+
+.hizb-item input:checked + .hizb-label .hizb-text {
+            color: rgba(255,255,255,0.8);
+        }
+
+@media (max-width: 600px) {
+            .grid-container { grid-template-columns: 1fr; }
+        }
+
+
+.refresh{
+    width: 100%;
+    height: 25px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 50px;
+    background-color: var(--warning);
+    cursor: pointer;
+}
+.reset-link {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
