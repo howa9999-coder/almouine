@@ -25,16 +25,30 @@ body {
 a{
     text-decoration: none;
 }
-header, #header_fixed{
-    width: 90%;
+
+ header, #header_fixed{
     text-align: center;
     background: white;
+    padding: 20px;
+    width: 91%;
+    max-width: 1200px;
 }
 header{
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     border-top: 8px solid var(--primary-green);
+
 }
+#header_fixed {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0px;
+            z-index: 100;
+            margin-bottom: 30px;
+            border-bottom-left-radius: 15px ;
+            border-bottom-right-radius: 15px;
+            transition: background 0.5s ease, box-shadow 0.3s ease,padding 0.3s ease, top 0.3s ease;
+    }
 .reset-link {
     display: inline-block;
     margin-top: 15px;
@@ -43,16 +57,7 @@ header{
     font-size: 0.85rem;
     cursor: pointer;
 }
-#header_fixed {
-            box-shadow: 0 4px 6px var(--shadow);
-            position: sticky;
-            top: 0px;
-            z-index: 100;
-            padding-bottom: 20px;
-            border-bottom-left-radius: 15px ;
-            border-bottom-right-radius: 15px;
-            transition: background 0.5s ease, box-shadow 0.3s ease,padding 0.3s ease, top 0.3s ease;
-}
+
 .menu{
     display: flex;
     justify-content: space-between;
@@ -65,6 +70,7 @@ body{
     align-items: center;
     flex-direction: column;
 }
+
 button{
     border: none;
     background-color: transparent;
@@ -81,12 +87,13 @@ main{
     align-items: center;
     border-radius: 20px;
     gap: 30px;
-    width: 90%;
     height: 80%;
     flex-direction: column;
     margin-top: 30px;
     margin-bottom: 80px;
+    max-width: 1200px;
 }
+
 h4{
     margin-bottom: 50px; 
     display: inline; 
@@ -98,15 +105,15 @@ h4{
     border-radius: 20px;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: 10px;
     max-width: 90%; /* Adjust the container width */
 }
 
 .circle-checkbox {
     position: relative;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
 }
 
 .circle-checkbox input[type="checkbox"] {
@@ -230,7 +237,14 @@ h4{
             gap: 8px;
         }
 
-.btn-record { background: var(--warning); color: white; }
+.btn-record { 
+    background: var(--warning); 
+    color: white; 
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
 .btn-record.active { animation: pulse 1.5s infinite; background: #e63946; }
 .btn-record.is-recording{
     background-color: var(--primary-green); 
@@ -244,23 +258,30 @@ h4{
 .btn-refresh { background: var(--gold); color: white; }
         
         .btn:hover { opacity: 0.9; transform: translateY(-2px); }
-.btn-play {
+.mic-btn-container {
     position: fixed;
     bottom: 10px;
-    background-color: var(--blue);
-    color: white;
     padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px var(--shadow);
+    width: 90%;
+}
+.btn-play{
+    background-color: var(--blue);
     border-radius: 10px;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px var(--shadow);
-    width: 90%;
+    color: white;
+    width: 65%;
+
 }
 
 .btn-play:hover {
