@@ -10,26 +10,22 @@
 <body dir="rtl">
         <header>
                 <a href="index.html">
-                    <h1>
+                    <h1> 
                          المعين على التكرار
                     </h1>
                 </a>
 
     </header>
     <div id="header_fixed">
-            <div class="settings-bar">
-                <span>العدد:</span>
-                <select name="" id="repeat">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="20" selected>20</option>
+
+        <div class="controls">
+                 <select name="" id="repeat">
+                    <option value="6">6</option>
+                    <option value="12">12</option>
+                    <option value="24" selected>24</option>
                     <option value="30" >30</option>
                 </select>
-            </div>
-        <div class="controls">
-            <button class="btn btn-record" id="mic" >
-                <span>⏺</span> تسجيل
-            </button>
+
 
             <button class="btn btn-refresh refresh" id="refresh-btn">
                 <span>🔄</span> تحديث
@@ -57,10 +53,16 @@
         </div>
     </main>
     <audio controls  id="audio-recorder" class="playback" style="display: none;"></audio>
-    <button class="btn btn-play" id="custom-play-btn">
-        <span class="icon">▶</span>
-        <span class="text">استماع للتسجيل</span>
-    </button>
+    <div class="mic-btn-container">
+        <button class="btn btn-record" id="mic" >
+            <span>⏺</span> تسجيل
+        </button>
+        <button class="btn btn-play" id="custom-play-btn">
+            <span class="icon">▶</span>
+            <span class="text">استماع للتسجيل</span>
+        </button>
+    </div>
+
     <script src="js/tikrar.js"></script>
 </body>
 </html>
