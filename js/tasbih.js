@@ -149,26 +149,6 @@ function progress(ui, id) {
     })
 }
 
-// RESET ALL FUNCTION
-const resetAll = document.querySelector('#reset-all-btn')
-resetAll.addEventListener('click', ()=>{
-    for (let i=0; i< tassbih.length; i++){        
-        tassbihObject[`option-${[i]}`] = {
-            id: `option-${[i]}`,
-            value: tassbih[i],
-            count: 0,
-            goal:   33,
-            percent:  0,
-            offset:  596.9026041820607
-        }
-    } 
-    localStorage.setItem('tasbih-object', JSON.stringify(tassbihObject)) 
-    //SELECT VALUE FROM LOCAL STORAGE
-    optionID= 'option-0'
-    selectTassbih.value = tassbihObject[optionID].value 
 
-    // Initial Load
-    initApp(optionID);
-})
 
 
