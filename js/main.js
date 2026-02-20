@@ -64,7 +64,6 @@ if ('serviceWorker' in navigator) {
 
 // List of Tasbih phrases
 const tassbih = [
-    'سُبْحَانَ اللَّهِ',
     'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ',
     'سُبْحَانَ اللَّهِ الْعَظِيمِ',
     'الْحَمْدُ لِلَّهِ',
@@ -111,17 +110,47 @@ console.log(tassbihObject)
 const tassbihLength = tassbih.length
 const tassbihData = document.querySelector('#tassbih-data')
 const more = document.querySelector('.more')
+const progressPercentTassbih = document.querySelector('#progress-percent-tassbih')
+const progressBarTassbih = document.querySelector('#progress-bar-tassbih')
 let goalSum = 0
 let countSum = 0
-if(tassbihObjectLength>0){
-    console.log('test')
-    for(let i =0; i<tassbihLength; i++){
-        id = `option-${i}`
-        tassbihData.innerHTML+=`<p class="progress-text">${tassbih[i]} : <span> ${tassbihObject[id].count || 0}/${tassbihObject[id].goal || (33*5)}</span></p>`
+function tassbihContent(){
+    tassbihData.innerHTML=''
+    if(tassbihObjectLength>0){
+        for(let i =0; i<tassbihLength; i++){
+            id = `option-${i}`
+            tassbihData.innerHTML+=`<p class="progress-text">${tassbih[i]} : <span> ${tassbihObject[id].count || 0}/${tassbihObject[id].goal || (33*5)}</span></p>`
+        }
+        tassbihData.innerHTML += `
+            <div>
+                <span class="reset-link" onclick="resetAll()" id="reset-all-btn">إعادة ضبط الكل</span>
+            </div>
+        `
     }
 }
+tassbihContent()
+function resetAll(){
+    for (let i=0; i< tassbih.length; i++){        
+        tassbihObject[`option-${[i]}`] = {
+            id: `option-${[i]}`,
+            value: tassbih[i],
+            count: 0,
+            goal:   33,
+            percent:  0,
+            offset:  596.9026041820607
+        }
+    } 
+    localStorage.setItem('tasbih-object', JSON.stringify(tassbihObject)) 
+    optionID= 'option-0'
+    localStorage.setItem('optionID', JSON.stringify(optionID));
+    tassbihContent()
+    progressBarTassbih.style.width = '0%'
+    progressPercentTassbih.innerHTML = '0%'
+
+    }
+
+
 if(tassbihObjectLength>0){
-  //  if(goalSum == (33*tassbihLength)){
         goalSum= 0
     for(let i =0; i<tassbihLength; i++){  
         const id = `option-${i}`
@@ -133,9 +162,7 @@ if(tassbihObjectLength>0){
             countSum = countSum + tassbihObject[id].count
         }
     let tassbihPercent = (countSum/goalSum)*100
-    const progressBarTassbih = document.querySelector('#progress-bar-tassbih')
     progressBarTassbih.style.width = tassbihPercent+'%'
-    const progressPercentTassbih = document.querySelector('#progress-percent-tassbih')
     progressPercentTassbih.innerHTML = Math.round(tassbihPercent)+'%'
     more.classList.add("active")
 }
