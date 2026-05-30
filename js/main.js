@@ -1,7 +1,6 @@
 // ============================================================
 // PWA INSTALL BUTTON LOGIC
 // ============================================================
-
 // Select the install button
 const installBtn = document.querySelector('#install-btn');
 
@@ -57,22 +56,48 @@ if ('serviceWorker' in navigator) {
 }
 
 
-
 // ============================================================
 // TASBIH DEFAULT DATA (INITIAL SETUP)
 // ============================================================
 
-// List of Tasbih phrases
-const tassbih = [
-    'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ',
-    'سُبْحَانَ اللَّهِ الْعَظِيمِ',
-    'الْحَمْدُ لِلَّهِ',
-    'اللَّهُ أَكْبَرُ',
-    'لَا إِلٰهَ إِلَّا اللَّهُ',
-    'أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ'
-];
-// Store Tasbih list in localStorage
-localStorage.setItem('tasbih-data', JSON.stringify(tassbih));
+let tassbihObject = JSON.parse(localStorage.getItem('tasbih-object')) || null
+if (!tassbihObject || Object.keys(tassbihObject).length == 0){
+    tassbihObject = {
+        'option-0': {
+            id: 'option-0',
+            value:'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ',
+            goal: 33,
+            count: 0,
+            offset: 596.9026041820607,
+            percent: 0
+        },
+        'option-1': {
+            id: 'option-1',
+            value:'سُبْحَانَ اللَّهِ الْعَظِيمِ',
+            goal: 33,
+            count: 0,
+            offset: 596.9026041820607,
+            percent: 0
+        },
+        'option-2': {
+            id: 'option-2',
+            value: 'الْحَمْدُ لِلَّهِ',
+            goal: 33,
+            count: 0,
+            offset: 596.9026041820607,
+            percent: 0
+        },
+        'option-3': {
+            id: 'option-3',
+            value: 'اللَّهُ أَكْبَرُ',
+            goal: 33,
+            count: 0,
+            offset: 596.9026041820607,
+            percent: 0
+        }    
+    }
+    localStorage.setItem('tasbih-object', JSON.stringify(tassbihObject))
+}
 
 
 //========================================AHZAB PROGRESS================================================================
@@ -104,10 +129,9 @@ progressBarTikrar.style.width = tikrarPercentage+'%'
 progressPercentTikrar.innerHTML = Math.round(tikrarPercentage)+'%'
 
 //======================================TASSBIH PROGRESS============================================================
-const tassbihObject = JSON.parse(localStorage.getItem('tasbih-object')) || {}
 const tassbihObjectLength = Object.keys(tassbihObject).length
-console.log(tassbihObject)
-const tassbihLength = tassbih.length
+//console.log(tassbihObject)
+
 const tassbihData = document.querySelector('#tassbih-data')
 const more = document.querySelector('.more')
 const progressPercentTassbih = document.querySelector('#progress-percent-tassbih')
@@ -116,58 +140,48 @@ let goalSum = 0
 let countSum = 0
 function tassbihContent(){
     tassbihData.innerHTML=''
-    if(tassbihObjectLength>0){
-        for(let i =0; i<tassbihLength; i++){
-            id = `option-${i}`
-            tassbihData.innerHTML+=`<p class="progress-text">${tassbih[i]} : <span> ${tassbihObject[id].count || 0}/${tassbihObject[id].goal || (33*5)}</span></p>`
-        }
+     Object.values(tassbihObject).forEach(dikr => {
+       // console.log(dikr.value)
+        tassbihData.innerHTML+=`<p class="progress-text">${dikr.value} : <span> ${dikr.count || 0}/${dikr.goal || (33*5)}</span></p>`
+     })
         tassbihData.innerHTML += `
-            <div>
+            <div class='links-container'>
+                <span><a href='tasbihEdit.htm'>تعديل</a></span>
                 <span class="reset-link" onclick="resetAll()" id="reset-all-btn">إعادة ضبط الكل</span>
             </div>
-        `
-    }
+        `     
+    
 }
+
 tassbihContent()
+// 1. the progress bar is not working
+
 function resetAll(){
-    for (let i=0; i< tassbih.length; i++){        
-        tassbihObject[`option-${[i]}`] = {
-            id: `option-${[i]}`,
-            value: tassbih[i],
-            count: 0,
-            goal:   33,
-            percent:  0,
-            offset:  596.9026041820607
-        }
-    } 
+    Object.values(tassbihObject).forEach(dikr => {
+        dikr.count = 0
+        dikr.percent = 0
+        dikr.offset = 596.9026041820607
+    })
     localStorage.setItem('tasbih-object', JSON.stringify(tassbihObject)) 
     optionID= 'option-0'
     localStorage.setItem('optionID', JSON.stringify(optionID));
     tassbihContent()
     progressBarTassbih.style.width = '0%'
-    progressPercentTassbih.innerHTML = '0%'
+    progressPercentTassbih.innerHTML = '0%'    
+}
 
-    }
-
-
-if(tassbihObjectLength>0){
-        goalSum= 0
-    for(let i =0; i<tassbihLength; i++){  
-        const id = `option-${i}`
-        goalSum = goalSum + tassbihObject[id].goal
-    }
+progressFunc()
+function progressFunc(){
+    goalSum = 0
     countSum = 0
-        for(let i =0; i<tassbihLength; i++){
-            const id = `option-${i}`
-            countSum = countSum + tassbihObject[id].count
-        }
+    Object.values(tassbihObject).forEach(dikr => {
+       goalSum = goalSum + dikr.goal
+       countSum = countSum + dikr.count
+     })
     let tassbihPercent = (countSum/goalSum)*100
     progressBarTassbih.style.width = tassbihPercent+'%'
     progressPercentTassbih.innerHTML = Math.round(tassbihPercent)+'%'
-    more.classList.add("active")
 }
-
-
 
 more.addEventListener('click', () => {
     // 1. Toggle the visibility class
