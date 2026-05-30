@@ -1,7 +1,7 @@
 /* ===============================
    CACHE NAME (change version to force update)
    =============================== */
-const cacheName = 'almo3ine-v000-01';
+const cacheName = 'almo3ine-v000-02';
 
 /* ===============================
    FILES TO CACHE FOR OFFLINE USE
@@ -12,16 +12,19 @@ const assets = [
     './ahzab.htm',         // Ahzab page
     './tasbih.htm',        // Tasbih page
     './tikrar.htm',        // Tikrar page
+    './tasbihEdit.htm',        // Tasbih Edit page
 
     './css/ahzab.css',     // Styles for Ahzab
     './css/style.css',     // Global styles
     './css/tasbih.css',    // Tasbih styles
     './css/tikrar.css',    // Tikrar styles
+    './css/tasbihEdit.css',
 
     './js/ahzab.js',       // Ahzab logic
     './js/main.js',        // Main app logic
     './js/tasbih.js',      // Tasbih logic
     './js/tikrar.js',      // Tikrar logic
+    './js/tasbihEdit.js',
 
     './images/repeat.png',     // UI icon
     './images/repeat192.png',  // App icon
