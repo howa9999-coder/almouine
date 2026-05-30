@@ -12,6 +12,7 @@
             --warning: #c57659;
             --blue: #007BFF;
             --shadow: rgba(0,0,0,0.05);
+            --gray: rgba(121, 121, 121, 0.918);
 
 }
 
@@ -249,7 +250,15 @@ h4{
 .btn-record.is-recording{
     background-color: var(--primary-green); 
     animation: pulse-red 2s infinite;
-}    
+}  
+.btn-download { 
+    background: var(--primary-green); 
+    color: white; 
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }  
 @keyframes pulse-red {
     0% { box-shadow: 0 0 0 0 var(--warning); }
     70% { box-shadow: 0 0 0 10px rgba(0, 123, 255, 0); }
@@ -280,7 +289,7 @@ h4{
     align-items: center;
     justify-content: center;
     color: white;
-    width: 65%;
+    width: 60%;
 
 }
 
@@ -323,4 +332,7 @@ h4{
 #goal-container{
     font-weight: bold;
     color: var(--gold);
+}
+.gray{
+    background-color: var(--gray);
 }
