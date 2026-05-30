@@ -1,10 +1,16 @@
+
+/*
+clean the code and fix my variables 
+ */
 const tassbih = JSON.parse(localStorage.getItem("tasbih-data")) || []
 const selectTassbih = document.querySelector('#select-tassbih')
 const tassbihContainer = document.querySelector('#tassbih-container')
 const tassbihObject =  JSON.parse(localStorage.getItem('tasbih-object')) || {}; 
 let optionID = JSON.parse(localStorage.getItem("optionID")) || 'option-0';
 
-for (let i = 0; i < tassbih.length; i++) {
+
+//1. now for tasbih page i need to feed my select input with tasbihobject without using the array
+/* for (let i = 0; i < tassbih.length; i++) {
     const id = `option-${i}`;
     
     // Create the option element
@@ -21,10 +27,15 @@ for (let i = 0; i < tassbih.length; i++) {
         percent: existingData.percent || 0,
         offset: existingData.offset || 596.9026041820607
     };
-}
-
+} */
+     Object.values(tassbihObject).forEach(dikr => {
+       // console.log(dikr.value)
+       // Create the option element
+        selectTassbih.innerHTML += `<option id="${dikr.id}" value="${dikr.value}">${dikr.value}</option>`;
+       // tassbihData.innerHTML+=`<p class="progress-text">${dikr.value} : <span> ${dikr.count || 0}/${dikr.goal || (33*5)}</span></p>`
+     })
 // TO STORE THE DEFAULT VERSION OF tassbihObject IN LOCALSTORAGE
-localStorage.setItem('tasbih-object', JSON.stringify(tassbihObject))   
+//localStorage.setItem('tasbih-object', JSON.stringify(tassbihObject))   
 
 //SELECT VALUE FROM LOCAL STORAGE
 selectTassbih.value = tassbihObject[optionID].value 
@@ -141,7 +152,8 @@ function progress(ui, id) {
     const newRestBtn = resetBtn.cloneNode(true)
     resetBtn.parentNode.replaceChild(newRestBtn, resetBtn);
     newRestBtn.addEventListener('click', ()=>{
-        tassbihObject[id].count = 0;
+        count = 0
+        tassbihObject[id].count = count;
         tassbihObject[id].offset = circumference;
         tassbihObject[id].percent = 0;
         localStorage.setItem('tasbih-object', JSON.stringify(tassbihObject));
