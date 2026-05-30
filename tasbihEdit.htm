@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/tasbih.css">
+    <link rel="stylesheet" href="css/tasbihEdit.css">
+    <!-- <link rel="manifest" href="manifest.json"> -->
+    <title> أذكار التسبيح </title>
+</head>
+<!-- clean and restyle -->
+<body dir="rtl">
+        <div class="card">
+        <a href="index.htm" style="text-decoration: none;"> 
+            <h1>
+                أذكار التسبيح
+            </h1> 
+        </a>
+
+
+       <!--  <select name="tassbih" id="select-tassbih">
+        </select> -->
+        <div id="listView">
+            <div id="tassbih-container">
+                <button class="btn add-dikr" onclick="document.getElementById('entryModal').showModal()">إضافة ذكر +</button>
+                <div class="table-container" style="margin-top: 15px;">
+                    <table id="logTable">
+                        <thead>
+                            <tr><th>الذكر</th><th>الهدف</th><th>النسبة</th></tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="detailView" class="hidden">
+            <button class="back-btn" onclick="showList()">← الرجوع إلى الائحة</button>
+            <div class="detail-card">
+                <p><strong>الذكر:</strong> <input type="text" id="dDikr"></p>
+                <p><strong>الهدف:</strong> <input type="number" id="dGoal"></p>
+                <!-- <p><strong>النسبة:</strong> <input readonly id="dPercentage"></p> -->
+            </div>
+            <div id="detailView-btn-container">
+                
+            </div>
+        </div>
+        <dialog id="entryModal">
+            <div>
+            <div class="detail-card">
+                <h3>إضافة ذكر</h3>
+                <p><strong>الذكر:</strong> <input type="text" id="newDikr"></p>
+                <p><strong>الهدف:</strong> <input type="number" id="newGoal"></p>
+            </div>
+            <div id="detailView-btn-container">
+                <button class="btn-add" onclick="saveTasbih()">حفظ</button>
+                <button class="btn-cancel"  onclick="document.getElementById('entryModal').close()">إلغاء</button>
+
+            </div>
+            </div>
+        </dialog>
+        <button class="btn add-dikr" id="default-btn" onclick="confirme(defaultMsg)" style="margin-top: 25px;">الأذكار الإفتراضية</button>
+    </div>
+
+                
+        <div id="customModal" style="display: none;">
+            <div class="modal-content">
+                <p id="message"> </p>
+                <div class="modal-buttons">
+                    <button class="modal-btn" onclick="handleResponse(true)">نعم</button>
+                    <button class="modal-btn" onclick="handleResponse(false)">لا</button>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Notification -->
+    <div id="notification" class="alert alert-success mb-0 border-start border-success border-2 " style="z-index: 1000000000000000;">
+      Copied successfully!
+    </div>
+    <script src="js/tasbihEdit.js"></script>
+</body>
+</html>
