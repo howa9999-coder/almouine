@@ -25,7 +25,7 @@ let tikrarLength = Object.keys(savedStates).length
 counter.innerHTML= tikrarLength
 
 //checkbox generator 
-let lunch = JSON.parse(localStorage.getItem("value")) || 20
+let lunch = JSON.parse(localStorage.getItem("value")) || 24
 const select =  document.querySelector('#repeat')
 select.value = lunch
 goalContainer.innerHTML=lunch
@@ -39,6 +39,13 @@ const audio = document.getElementById('audio-recorder');
 const playBtn = document.getElementById('custom-play-btn');
 const icon = playBtn.querySelector('.icon');
 const btnText = playBtn.querySelector('.text');
+const downloadBtn = document.getElementById("downloadBtn");
+
+
+if (!audio.src) {
+    downloadBtn.classList.add('gray')
+    playBtn.classList.add('gray')
+}
 
 playBtn.addEventListener('click', () => {
     if (audio.paused) {
@@ -107,6 +114,8 @@ let chunks = [];
      } else {
          recorder.stop();
          mic_btn.classList.remove("is-recording");
+        downloadBtn.classList.remove('gray')
+        playBtn.classList.remove('gray')
          confirme();
      }
  }
@@ -227,3 +236,27 @@ function refreshFunction(){
     updateProgress()
 }
 
+//==================================Download record
+
+downloadBtn.addEventListener("click", () => {
+    if (!audio.src) {
+        alert("No recording available");
+        downloadBtn.classList.add('gray')
+        return;
+    }
+
+    // Create temporary link
+    const a = document.createElement("a");
+    a.href = audio.src;
+
+    // File name
+   /*  `recording-${Date.now()}.webm` */
+    a.download = `${fromContent}-${toContent}.webm`;
+
+    // Trigger download
+    document.body.appendChild(a);
+    a.click();
+
+    // Cleanup
+    document.body.removeChild(a);
+});
