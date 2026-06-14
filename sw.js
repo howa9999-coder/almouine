@@ -1,7 +1,7 @@
 /* ===============================
    CACHE NAME (change version to force update)
    =============================== */
-const cacheName = 'almo3ine-v000-05';
+const cacheName = 'almo3ine-v000-06';
 
 /* ===============================
    FILES TO CACHE FOR OFFLINE USE
